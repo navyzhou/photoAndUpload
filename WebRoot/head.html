@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery新浪微博头像裁切预览代码</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="js/cropbox.js"></script>
+<script type="text/javascript" src="js/gethead.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="imageBox">
+			<div class="thumbBox"></div>
+			<div class="spinner" style="display: none">Loading...</div>
+		</div>
+		<div class="action">
+			<!-- <input type="file" id="file" style=" width: 200px">-->
+			<div class="new-contentarea tc">
+				<a href="javascript:void(0)" class="upload-img"> <label for="upload-file">上传图像</label> </a> <input type="file" class="" name="upload-file" id="upload-file" />
+			</div>
+			<input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
+			<input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+			<input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+		</div>
+		<div class="cropped"></div>
+	</div>
+	<br /><br /><br />
+	<center><input type="button" value="保存" onclick="uploadHead()"></center>
+</body>
+</html>

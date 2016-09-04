@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>调用摄像头</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="js/cropbox.js"></script>
+<script type="text/javascript" src="js/getheads.js"></script>
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+<style type="text/css">
+#camera_errbox {
+	width: 320px;
+	height: auto;
+	border: 1px solid #333333;
+	padding: 10px;
+	color: #fff;
+	text-align: left;
+	margin: 20px auto;
+	font-size: 14px;
+}
+
+#camera_errbox b {
+	padding-bottom: 15px;
+}
+
+.borderstyle{
+	-webkit-box-shadow:0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6);
+	-moz-box-shadow:0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6);
+	-ms-box-shadow:0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6);
+	-o-box-shadow:0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6);
+	box-shadow:0 0 5px 3px rgba(255,0,0,.6),0 0 5px 6px rgba(0,182,0,.6),0 0 5px 10px rgba(255,255,0,.6);
+}
+
+#navy_video{
+	float:left;
+}
+
+#canvas{
+	float:left;
+	margin-left:20px;
+}
+
+</style>
+</head>
+<body onLoad="init(this)" oncontextmenu="return false" onselectstart="return false">
+	<center>
+		<video id="navy_video" width="320px" height="240px" autoplay class="borderstyle"></video>
+		<div id="camera_errbox"></div>
+	</center>
+	<div class="container">
+		<div class="imageBox" id="imageBox">
+			<div class="thumbBox"></div>
+			<div class="spinner" style="display: none">Loading...</div>
+		</div>
+		<div class="action">
+			<div class="new-contentarea tc">
+				<a href="javascript:void(0)" class="upload-img"> <label for="upload-file">本地上传</label> </a> <input type="file" class="" name="upload-file" id="upload-file" />
+			</div>
+			<input id="snap" type="button" class="Btnsty_peyton" value="拍照"/>
+			<input type="button" id="btnCrop" class="Btnsty_peyton" value="裁切">
+			<input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+			<input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+			
+		</div>
+		<div class="cropped"></div>
+	</div>
+	<br /><br /><br />
+	<center><input type="button" value="保存" onclick="uploadHead()"></center>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<style type="text/css">
+	html {
+		overflow: hidden;
+	}
+	body {
+		background-color: #999;
+	}
+	video {
+		display: block;
+		margin: 60px auto 0;
+	}
+	#shotBar {
+		position: absolute;
+		bottom: 5px;
+		height: 120px;
+		width: 98%;
+		background-color: #000;
+		box-shadow: -5px -5px 10px #fff;
+		border-radius: 5px;
+		padding: 2px;
+		overflow: auto;
+	}
+	#shotBar img {
+		border: 3px solid #fff;
+		border-radius: 5px;
+		height: 110px;
+		width: 210px;
+		margin-left: 4px;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/videoshot.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+<script type="text/javascript">  
+	$(function (){  
+		ZhangHongyang.click2shot.init();  
+	}); 
+	
+	function savePic(){
+		//.toDataURL("image/png")
+		var imgData=localStorage.getItem("imgInfo");
+		imgData = imgData.replace(/^data:image\/(png|jpg);base64,/, "")
+		$.ajaxFileUpload({
+			url:'uploadServlet',
+			data:{imageData:imgData},
+			dataType:'json',
+			success:function(data,status){
+				data=parseInt( $.trim(data));
+				if(data==1){
+					alert("图片上传成功...");
+				}else{
+					alert("图片上传失败...");
+				}
+				localStorage.removeItem("imgInfo");
+			},
+			error:function(data,status,e){
+				alert("图片上传失败...");
+			}
+		});
+	}
+</script>
+</head>
+<body>
+    <video src="media/style.mp4" controls id="video"> </video>
+    <div id="shotBar"></div>
+	<button onclick="savePic()">保存图片</button>
+</body>
+</html>
